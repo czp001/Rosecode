@@ -1,3 +1,4 @@
+f[l_] := l~Join~Reverse[Drop[l, -1]]; 
 Table[FromDigits /@ 
     Select[f /@ 
       Tuples[{2, 3, 5, 7}, n], # == Reverse[#] && 
