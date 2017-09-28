@@ -1,0 +1,5 @@
+Table[FromDigits /@ 
+    Select[f /@ 
+      Tuples[{2, 3, 5, 7}, n], # == Reverse[#] && 
+       PrimeQ[FromDigits[#]] &], {n, 10}] // 
+  Flatten // {Length[#], Total[#]} &
