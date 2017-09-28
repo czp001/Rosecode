@@ -1,0 +1,6 @@
+a[n_] := a[n] = 
+   If[n < 1, 0, 
+    Sum[(2*k)!/k!/(k + 1)!, {k, 1, n}] + 
+     Sum[(2*Binomial[n + k - 1, k] - Binomial[n + k, k])*
+       a[n - 1 - k], {k, 0, n - 2}]];
+IntegerDigits[a[100]] // Total
