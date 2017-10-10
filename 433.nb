@@ -1,0 +1,6 @@
+a[i_] := Sqrt[i + 1]; b[i_] := Sqrt[i + 2]; c[i_] := Sqrt[i + 3];
+s[i_] := {x, y, z} /. 
+   NSolve[x^2 + y^2 + x*y == a[i] && y^2 + z^2 + y*z == b[i] && 
+     z^2 + x^2 + x*z == c[i] && x > 0 && y > 0 && z > 0, {x, y, z}, 
+    WorkingPrecision -> 15];
+Plus @@ s /@ Range[1923]
