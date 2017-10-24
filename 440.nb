@@ -1,0 +1,8 @@
+f = (#[[1]]*10^5 + #[[2]]) &;
+f /@ Select[
+   Flatten[{#, Reverse[#]} & /@ 
+     Subsets[Select[
+       Range[Floor@Sqrt@1023456789, Ceiling@Sqrt@9876543210], 
+       Sort@IntegerDigits[#^2] == Range[0, 9] &], {2}], 1], 
+   Sort@IntegerDigits[f@##] == Range[0, 9] &] // {Length[#], 
+   Total[#]} &
