@@ -1,0 +1,2 @@
+Sum[-Cos[n*\[Pi]/2] PrimeZetaP[n], {n, 2, 1000}] // 
+   RealDigits[#, 10, 50] & // FromDigits // N[#, 50] &
