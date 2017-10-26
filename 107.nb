@@ -20,7 +20,6 @@ f[x_] := With[{k = Numerator[x], d = Denominator[x]},
    y /. Select[f /@ Convergents[ContinuedFraction[e/n]][[2 ;;]], 
      Length[#] > 0 &]];
 d = ModularInverse[e, (p - 1) (q - 1)];
-n = p*q;
 FromCharacterCode[
  FromDigits[#, 16] & /@ 
   Partition[IntegerDigits[PowerMod[message, d, n], 16], 2]]
