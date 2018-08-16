@@ -1,0 +1,6 @@
+a = PowersRepresentations[10^(36) + 1, 2, 2] // Rest;
+a = SortBy[#, OddQ] & /@ a;
+#[[1]]^2 + #[[2]]^2 &@
+ First@Sort@
+   Select[{(10^18 - #[[1]])/2, (#[[2]] + 1)/2} & /@ a, 
+    IntegerLength[#[[1]]] == 18 &]
