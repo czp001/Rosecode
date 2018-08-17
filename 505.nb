@@ -1,0 +1,8 @@
+a = {0, l}; b = {0, 0}; c = {l, 0}; d = {l, l};
+e = {0, l/2}; f = {l/2, 0}; g = {l, l/2}; h = {l/2, l}; j = {x, y};
+s[x_, y_, z_] := 
+  Abs[Det[Transpose[{x, y, z}\[Transpose]~Join~{{1, 1, 1}}]]]/2;
+Solve[s[a, h, e] + s[e, h, j] == 65123128 && 
+  s[b, e, f] + s[j, e, f] == 72108967 && 
+  s[j, h, g] + s[d, h, g] == 69011033 && x > 0 && y > 0 && l > 0, {x, 
+  y, l}]
