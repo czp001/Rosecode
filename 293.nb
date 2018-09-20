@@ -1,0 +1,11 @@
+f[a_, b_] := a[[1]] b[[2]] - a[[2]] b[[1]];
+g[a_, b_] := Abs@GCD[a[[1]] - b[[1]], a[[2]] - b[[2]]] + 1;
+in[n_] := Module[{},
+   lt = {{0, 0}}~
+     Join~({Numerator[#], Denominator[#]} & /@ FareySequence[n]*2)~
+     Join~{{0, 0}};
+   Abs@Sum[f[lt[[i]], lt[[i + 1]]], {i, Length[lt] - 1}]/
+     2 - (Sum[g[lt[[i]], lt[[i + 1]]], {i, Length[lt] - 1}] - 
+       Sum[EulerPhi[i], {i, n}] - 2)/2 + 1];
+n = 4; While[in[n] <= 2000, n++];
+{n, in[n]}
