@@ -1,0 +1,15 @@
+F(N=10000)={
+	lim=floor(sqrt(N));s=[];
+	for(m=2,lim,
+		for(n=1,m-1,
+		a=m^2-n^2;b=2*m*n;c=m^2+n^2;if(b<a,ma=a;a=b;b=ma);
+		for(k=1,floor(N/(a+b+c)),
+		t=(b*k)^2-(a*k)^2;d=divisors(t);le=#d;
+			for(i=1,ceil(le/2),x=(t/d[i]-d[i])/2;y=(t/d[i]+d[i])/2;
+				if(y^2+(c*k)^2-(b*k)^2==floor(sqrt(y^2+(c*k)^2-(b*k)^2))^2&&x^2-(a*k)^2>0&&a+b+c<N,
+				s=concat(s,x^2-(a*k)^2))
+			)	
+		)	
+	));
+	ans=Set(s);[#ans,vecsum(ans)]
+}
