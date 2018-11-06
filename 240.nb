@@ -1,0 +1,14 @@
+a = Divisors[
+   LCM @@ (5^
+         Ceiling[Log[#]/Log[10]]*(5^# - 
+          1) & /@ (Exponent[#[[1]], x] & /@ 
+         FactorList[x^50 - Sum[x^i, {i, 0, 49}], Modulus -> 5] // 
+        Rest))];
+len = Length[a];
+f[n_] := Mod[
+    Algebra`MatrixPowerMod[
+      SparseArray[Band[{1, 2}] -> 1, {49, 50}]~
+       Join~{ConstantArray[1, 50]}, n, 5].ConstantArray[1, 50], 5] == 
+   ConstantArray[1, 50];
+For[j = 1, j <= len, j++, If[f[a[[j]]], Break[]]];
+LCM[51*2^8, a[[j]]*5^8]
