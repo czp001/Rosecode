@@ -1,0 +1,12 @@
+s=[];p=10^50;t=0;while(t<100,p=nextprime(p+1);if(p%5==1,s=concat(s,p);t=t+1));
+f(p)={
+x=qfbsolve(Qfb(1,3,1),p);
+for(i=1,2,
+	xi=x[i];
+	y11=(-3*xi+sqrtint(5*xi*xi+4*p))/2;
+	y12=(-3*xi-sqrtint(5*xi*xi+4*p))/2;
+	if(xi>0&&y11>0,return(vecsort([xi,y11])));
+	if(xi<0&&y12<0,return(vecsort([-xi,-y12])));
+	)
+}
+sum(i=1,100,f(s[i]))
