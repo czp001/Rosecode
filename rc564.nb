@@ -1,7 +1,0 @@
-s[1] := x/(1 - x);
-s[n_] := x/
-  Times @@ MapThread[#1^#2 &, {Table[1 - x^i, {i, 20}], 
-     CoefficientList[Series[s[n - 1], {x, 0, 20}], x] // Rest}]
-{CoefficientList[Series[s[1], {x, 0, 20}], x], 
-  CoefficientList[Series[s[2] - s[1], {x, 0, 20}], x], 
-  CoefficientList[Series[s[3] - s[2], {x, 0, 20}], x]} // MatrixForm
