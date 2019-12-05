@@ -1,0 +1,17 @@
+s[0] := x;
+s[1] := x/(1 - x);
+s[n_] := s[n] = 
+     x/Times @@ 
+         MapThread[#1^#2 &, {Table[1 - x^i, {i, 1000}], 
+             
+       CoefficientList[Series[s[n - 1], {x, 0, 1000}], x] // Rest}]; 
+u[0] := x;
+u[1] := x + x^2;
+u[2] := x/(1 - x);
+u[n_] := u[n] = 
+      If[EvenQ[n], 
+    s[n/2] - (s[n/2 - 1]^2 - (s[n/2 - 1] /. x -> x^2))/2, 
+        s[(n - 1)/
+              2] - (2 s[(n - 1)/2] s[(n - 1)/2 - 1] - 
+                s[(n - 1)/2]^2 - (s[(n - 1)/2] /. x -> x^2))/2];
+SeriesCoefficient[u[15], {x, 0, 1000}]~Mod~1000000007
